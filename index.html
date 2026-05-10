@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>IRCTC - Responsive</title>
+    <style>
+        .header-btn {
+            padding: 0.25rem 0.5rem;
+            transition: all;
+        }
+
+        .header-btn-blue {
+            background-color: #213d77;
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 0.25rem;
+        }
+
+        .input-box-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid #d1d5db;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            width: 100%;
+        }
+
+        .radio-square {
+            width: 1rem;
+            height: 1rem;
+            accent-color: #213d77;
+        }
+
+        /* When .dropdown is hovered, find the .drop child and show it */
+        .dropdown:hover .drop {
+            display: block !important;
+            /* Use !important to override Tailwind's 'hidden' class */
+        }
+
+        /* Optional: Make the dropdown look like a menu */
+        .drop {
+            min-width: 200px;
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            top: 100%;
+            /* Positions it right below the button */
+            left: 0;
+        }
+
+        .items {
+            padding: 8px 12px;
+            color: #213d77;
+            cursor: pointer;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .items:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen w-full overflow-x-hidden bg-gray-100">
+    <div id="container" class="min-h-full w-full flex flex-col">
+
+        <header class="w-full flex flex-col md:flex-row justify-between items-center p-4 bg-white gap-4">
+            <figure class="w-32 md:w-auto">
+                <img src="https://www.irctc.co.in/nget/assets/images/secondry-logo.png" alt="Secondary Logo"
+                    class="h-12 md:h-16">
+            </figure>
+
+            <div class="flex flex-col items-center w-full md:w-auto">
+                <section class="hidden sm:flex flex-row gap-5 tracking-widest font-serif text-sm mb-2">
+                    <div class="time"></div>
+                    <p>| <span class="ml-2">A<sup>-</sup></span> |</p>
+                    <p>| <span class="ml-2">A</span> |</p>
+                    <p>| <span class="ml-2">A<sup>+</sup></span> |</p>
+                    <p><strong>हिंदी</strong></p>
+                </section>
+
+                <nav class="flex flex-wrap gap-2 md:gap-3 items-center justify-center text-[10px] md:text-sm font-sans">
+                    <button class="header-btn-blue text-xs md:text-sm">LOGIN/REGISTER</button>
+                    <button class="header-btn text-red-600 font-bold uppercase underline">Trains</button>
+                    <button class="header-btn">MEALS</button>
+                    <div class="dropdown inline-block relative">
+                        <button id="loyal" class="header-btn-blue hidden md:block">LOYALTY</button>
+
+                        <!-- Changed: removed h-10, added 'drop' class for the CSS to target -->
+                        <div class="drop hidden absolute z-50 border border-gray-300  bg-white shadow-xl">
+                            <div class="items">About IRTC loyalty program</div>
+                            <div class="items">Compare co-brand Cards</div>
+                            <div class="items">IRTC SBI Credit Card</div>
+                            <div class="items">IRTC HDFC Credit Card</div>
+                            <div class="items">ADD Loyalty Account</div>
+                        </div>
+                    </div>
+
+                    <button class="header-btn text-red-600 animate-pulse underline">E-WALLET</button>
+                    <button class="header-btn hidden lg:block">CONTACT US</button>
+                </nav>
+            </div>
+
+            <figure class="w-12 md:w-auto">
+                <img src="https://www.irctc.co.in/nget/assets/images/logo.png" alt="Main Logo" class="h-12 md:h-16">
+            </figure>
+        </header>
+
+        <main
+            class="min-h-screen lg:min-h-[80vh] relative w-full bg-[url('https://www.irctc.co.in/nget/home_page_banner2.e6749c3d9698d1ac7608.jpg')] bg-cover bg-center bg-no-repeat py-10 flex flex-col lg:block">
+
+            <div class="hidden lg:block absolute top-10 right-20 text-[#213d77] text-right">
+                <h1 class="text-4xl lg:text-6xl font-medium">INDIAN RAILWAYS</h1>
+                <div class="text-lg flex gap-3 justify-end mt-2">
+                    <span>Safety</span> | <span>Security</span> | <span>Punctuality</span>
+                </div>
+            </div>
+
+            <div
+                class="mx-auto lg:ml-16 w-[92%] max-w-2xl bg-white shadow-2xl border-t-4 border-amber-500 overflow-hidden rounded-sm">
+                <div class="grid grid-cols-2 gap-3 h-12">
+                    <div
+                        class="bg-[#213d77] text-white flex justify-center items-center font-bold text-xs md:text-base cursor-pointer">
+                        PNR STATUS</div>
+                    <div
+                        class="bg-[#213d77] text-white flex justify-center items-center font-bold text-xs md:text-base opacity-90 border-l border-blue-900 cursor-pointer">
+                        CHART/VACANCY</div>
+                </div>
+
+
+                <div class="p-4 md:p-8">
+                    <h2 class="text-2xl md:text-4xl text-[#213d77] font-bold text-center mb-6">Book Ticket</h2>
+
+
+                    <form id="submission" action="post.js" method="post">
+
+
+                        <div class="flex flex-col md:grid md:grid-cols-[1fr_auto_1fr] gap-4 items-center mb-6">
+                            <div class="input-box-container">
+                                <span class="text-gray-400">From</span>
+                                <input type="text" placeholder="Origin" name="origin" id="origin"
+                                    class="outline-none w-full">
+                            </div>
+                            <figure
+                                class="cursor-pointer hover:rotate-180 transition-transform duration-300 rotate-90 md:rotate-0">
+                                <div class="p-2 bg-gray-100 rounded-full">⇄</div>
+                            </figure>
+                            <div class="input-box-container">
+                                <span class="text-gray-400">To</span>
+                                <input type="text" placeholder="Destination" name="destination_city" id="destination"
+                                    class="outline-none w-full">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="input-box-container">
+                                <input type="date" name="date" class="outline-none w-full bg-transparent">
+                            </div>
+                            <div class="input-box-container">
+                                <select id="options1" name="classes" class="outline-none w-full bg-transparent">
+                                    <option value="All">All Classes</option>
+                                    <option value="EA">Anubhuti Class (EA)</option>
+                                    <option value="AC_1">AC First Class (1A)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-8">
+                            <div class="input-box-container w-full md:w-1/2">
+                                <select class="outline-none  w-full bg-transparent " name="quota">
+                                    <option value="GENERAL ">GENERAL</option>
+                                    <option value="LADIES">LADIES</option>
+                                    <option value="TATKAL">TATKAL</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4 border-t pt-6">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="radio-square" name="num1">
+                                <span class="text-[#213d77] font-bold text-xs">Flexible with Date</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="radio-square" name="num2">
+                                <span class="text-[#213d77] font-bold text-xs">Train with Lab</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="radio-square" name="num3">
+                                <span class="text-[#213d77] font-bold text-xs">Divyaang Friendly</span>
+                            </label>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-[#fb792b] hover:bg-[#e06925] text-white font-bold py-3 mt-8 rounded shadow-lg transition-colors">
+
+                            SEARCH
+                        </button>
+                </div>
+                </form>
+
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
